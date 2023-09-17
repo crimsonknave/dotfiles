@@ -166,7 +166,9 @@ install_dotfiles () {
   generate_font_cache
   init_command_t
   setup_oh_my_zsh
-  install_powerline
+  # Pip/python doesn't want you to use pip outside of a .venv
+  # So, I'm supposed to install the linux packages for these
+  # install_powerline
   install_the_fuck
   install_aws_cli
   install_virtualenv
@@ -295,6 +297,11 @@ install_awesome_config () {
 }
 
 install_pip () {
+  if [ `which pip` ];then
+    info "skipping pip, it is installed\n"
+    return
+  fi
+
   info "installing pip\n"
 
   curl -o /tmp/get-pip.py 'https://bootstrap.pypa.io/get-pip.py'
@@ -379,7 +386,10 @@ local_pip_install () {
 }
 
 set_tmux_powerline_config () {
-  python_version=$(python -c 'import sys;sys.stdout.write(sys.version[0:3])')
+  python_version=$(python -c 'import sys;sys.stdout.write(sys.version[0:4].strip("."))')
+  echo "11111"
+  echo $python_version
+  echo "2222222"
 
   os=$(os_name)
 

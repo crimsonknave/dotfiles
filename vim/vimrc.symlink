@@ -2,6 +2,9 @@
 " simpler
 set nocompatible
 filetype off
+
+let g:CommandTPreferredImplementation='ruby'
+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -106,10 +109,10 @@ let g:clipbrdDefaultReg = '+'
 match Todo /\s\+$/
 
 " For syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" let g:syntastic_python_checkers = ['pylint']
 
 " For ALE
 let g:ale_python_auto_pipenv = 1
@@ -129,3 +132,6 @@ let g:multi_cursor_exit_from_insert_mode = 0
 " Doesn't seem to work for some reason...
 set title
 set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
+
+" Quickfix window (ack) goes to last used window instead of 'above'
+set switchbuf=uselast
