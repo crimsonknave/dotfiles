@@ -6,7 +6,7 @@ then
   then
     . ~/Library/Python/2.7/lib/**/powerline/bindings/zsh/powerline.zsh
   else
-    . ~/.local/lib/**/powerline/bindings/zsh/powerline.zsh
+    . /usr/lib/**/powerline/bindings/zsh/powerline.zsh
   fi
 fi
 

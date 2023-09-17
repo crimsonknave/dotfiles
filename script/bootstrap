@@ -175,6 +175,7 @@ install_dotfiles () {
   then
     install_github_stuffs
     install_shodan
+    install_i3ipc
   fi
   #check_packages_are_installed
 
@@ -306,6 +307,12 @@ install_pip () {
   success 'installed pip'
 }
 
+install_i3ipc () {
+  info 'installing i3ipc'
+  local_pip_install 'i3ipc'
+  success 'installed i3ipc'
+}
+
 install_the_fuck () {
   info 'installing the fuck'
   local_pip_install 'thefuck'
@@ -379,7 +386,8 @@ local_pip_install () {
 }
 
 set_tmux_powerline_config () {
-  python_version=$(python -c 'import sys;sys.stdout.write(sys.version[0:3])')
+  python_version=$(python -c 'import sys;sys.stdout.write(".".join(sys.version.split(".")[0:2]))')
+  echo $python_version
 
   os=$(os_name)
 
@@ -388,7 +396,7 @@ set_tmux_powerline_config () {
     local_pip_install 'psutil'
     echo "source `ls ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf`" > ~/.tmux_powerline.conf
   else
-    echo "source `ls ~/.local/lib/python$python_version/site-packages/powerline/bindings/tmux/powerline.conf`" > ~/.tmux_powerline.conf
+    echo "source `ls /usr/lib/python$python_version/site-packages/powerline/bindings/tmux/powerline.conf`" > ~/.tmux_powerline.conf
   fi
 }
 
@@ -397,7 +405,8 @@ install_powerline () {
 
   install_pip
 
-  local_pip_install 'powerline-status'
+  # Installing package instead
+  # local_pip_install 'powerline-status'
   local_pip_install 'powerline-kubernetes'
 
   set_tmux_powerline_config

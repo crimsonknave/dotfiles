@@ -105,11 +105,13 @@ let g:clipbrdDefaultReg = '+'
 
 match Todo /\s\+$/
 
-" For syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_python_checkers = ['pylint']
+" " For syntastic
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
+" let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" let g:syntastic_python_checkers = ['pylint']
+
+let ale_alex_executable = 'alexjs'
 
 " For ALE
 let g:ale_python_auto_pipenv = 1
@@ -117,6 +119,7 @@ let g:ale_python_flake8_change_directory = 0
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'python': ['black', 'isort'],
+      \   'ruby': ['rubocop'],
       \}
 
 " For nerdcommenter
