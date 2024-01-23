@@ -28,14 +28,11 @@ bind -r L resize-pane -R 5
 # Allow for reaload
 bind R source-file ~/.tmux.conf \; display-message "Config reloaded!"
 
-# Yeah, it's hard coded, couldn't get it not hardcoded, but we should have 
-# powerline installed in python2 land regardless and if we don't have 2.7 on 
-# the machine why the hell would we have tmux?
-#source "$TMUX_POWERLINE_CONFIG"
-source "$HOME/.tmux_powerline.conf"
+set -g @tmux_power_theme 'coral'
+run-shell "$HOME/.dotfiles/tmux/tmux-power/tmux-power.tmux"
 
 #Titles
 set -g set-titles on
 set -g set-titles-string 'tmux:#S:#I'
 set -g automatic-rename
-set-option -g default-shell /bin/zsh
+# set-option -g default-command "/usr/bin/zsh -l"

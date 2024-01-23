@@ -7,3 +7,6 @@
 [submodule "fonts.symlink/powerline-fonts"]
 	path = fonts.symlink/powerline-fonts
 	url = https://github.com/powerline/fonts.git
+[submodule "tmux/tmux-power"]
+	path = tmux/tmux-power
+	url = https://github.com/wfxr/tmux-power

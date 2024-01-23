@@ -41,6 +41,8 @@ Plugin 'tpope/vim-vividchalk'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'wincent/Command-T'
 Plugin 'yaymukund/vim-rabl'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 call vundle#end()
 
 syntax on
@@ -121,13 +123,15 @@ let g:ale_python_auto_pipenv = 1
 let g:ale_python_flake8_change_directory = 0
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \   'python': ['black', 'isort'],
       \   'ruby': ['rubocop'],
+      \   'python': ['black', 'ruff', 'ruff_format'],
       \}
 
 " For nerdcommenter
-let g:NERDSpaceDelims=1
+let g:NERDSpaceDelims = 1
 
+
+let g:pyindent_open_paren = 'shiftwidth()'
 let $GIT_SSL_NO_VERIFY = 'true'
 
 let g:multi_cursor_exit_from_insert_mode = 0

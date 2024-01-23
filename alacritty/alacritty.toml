@@ -1,0 +1,11 @@
+[font]
+size = 13.0
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [
+{key = "Escape", mods = "Control | Shift", mode = "~Vi", action = "ToggleViMode"},
+{key = "q",  mode = "Vi", action = "ToggleViMode"}
+]
