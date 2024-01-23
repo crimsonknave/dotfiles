@@ -165,7 +165,6 @@ install_dotfiles () {
   if [[ $os != "Codespaces" ]]
   then
     install_github_stuffs
-    install_i3ipc
   fi
   check_packages_are_installed
 
