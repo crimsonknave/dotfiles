@@ -169,9 +169,9 @@ install_dotfiles () {
   # Pip/python doesn't want you to use pip outside of a .venv
   # So, I'm supposed to install the linux packages for these
   # install_powerline
-  install_the_fuck
-  install_aws_cli
-  install_virtualenv
+  # install_the_fuck
+  # install_aws_cli
+  # install_virtualenv
   os=$(os_name)
   if [[ $os != "Codespaces" ]]
   then
