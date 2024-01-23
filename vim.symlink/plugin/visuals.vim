@@ -1,10 +1,10 @@
 set background=dark
 silent! color jellybeans
 
-" For Powerline
-let g:Powerline_symbols = 'fancy'
-set laststatus=2
-set guifont=Ubuntu\ Mono\ for\ Powerline\ 10
+" For airline
+" set guifont="Ubuntu\ Mono\ for\ Powerline\ 10"
+let g:airline_powerline_fonts = 1
+let g:airline_theme="durant"
 
 " 256 colors
 set t_Co=256
