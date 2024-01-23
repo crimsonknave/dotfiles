@@ -156,31 +156,73 @@ install_dotfiles () {
     link_file "$src" "$dst"
   done
 
-  # install_awesome_config
   install_alacritty_config
   update_submodules
   run_vundle
-  # download_powerline_symbols
-  install_emoji_font
-  # We need to generate to font cache so that we can use the patched fonts in the awesome widget
-  generate_font_cache
   init_command_t
   setup_oh_my_zsh
-  # Pip/python doesn't want you to use pip outside of a .venv
-  # So, I'm supposed to install the linux packages for these
-  # install_powerline
-  install_the_fuck
-  install_aws_cli
-  install_virtualenv
   os=$(os_name)
   if [[ $os != "Codespaces" ]]
   then
     install_github_stuffs
-    install_shodan
   fi
-  #check_packages_are_installed
+  check_packages_are_installed
 
   success 'laid down dotfiles'
+}
+
+check_package () {
+  local package=$1
+  needed_package=""
+  set +e
+  
+  if ! pacman -Q $package &> /dev/null; then
+    needed_package=" $package"
+  fi
+  set -e
+  package_list="$package_list$needed_package"
+}
+check_packages_are_installed () {
+  package_list=""
+  check_package "1password"
+  check_package "ack"
+  check_package "alacritty"
+  check_package "android-messages-desktop"
+  check_package "autojump"
+  check_package "clang"
+  check_package "discord"
+  check_package "docker"
+  check_package "dunst"
+  check_package "firefox"
+  check_package "gimp"
+  check_package "git"
+  check_package "gnome-calculator"
+  check_package "google-chat-linux-bin"
+  check_package "gwenview"
+  check_package "i3exit"
+  check_package "i3lock"
+  check_package "i3status-manjaro"
+  check_package "jq"
+  check_package "lsof"
+  check_package "lshw"
+  check_package "manjaro-i3-settings"
+  check_package "playerctl"
+  check_package "slack-desktop"
+  check_package "spotify"
+  check_package "traceroute"
+  check_package "vim"
+  check_package "zsh"
+  check_package "zsh-autosuggestions"
+  check_package "zsh-completions"
+  check_package "zsh-history-substring-search"
+  check_package "zsh-syntax-highlighting"
+  check_package "zsh-theme-powerlevel10k"
+  if [ ! -z $package_list ];then
+    info "Installing missing packages"
+    yay_string="yay -Sy$package_list"
+    echo $yay_string
+    $yay_string
+  fi
 }
 
 update_submodules () {
@@ -280,19 +322,6 @@ install_alacritty_config () {
   mkdir -p ~/.config/alacritty
   src="$(pwd)/alacritty/alacritty.toml"
   dst="$HOME/.config/alacritty/alacritty.toml"
-  link_file "$src" "$dst"
-}
-
-install_awesome_config () {
-  info 'installing awesome config files'
-
-  mkdir -p ~/.config/awesome
-  src="$(pwd)/awesome/rc.lua"
-  dst="$HOME/.config/awesome/rc.lua"
-  link_file "$src" "$dst"
-
-  src="$(pwd)/awesome/autorun.sh"
-  dst="$HOME/.config/awesome/autorun.sh"
   link_file "$src" "$dst"
 }
 
