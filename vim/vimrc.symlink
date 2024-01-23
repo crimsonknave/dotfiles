@@ -43,6 +43,7 @@ Plugin 'wincent/Command-T'
 Plugin 'yaymukund/vim-rabl'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'OmniSharp/OmniSharp-vim'
 call vundle#end()
 
 syntax on
@@ -116,13 +117,19 @@ match Todo /\s\+$/
 " let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 " let g:syntastic_python_checkers = ['pylint']
 
+let ale_alex_executable = 'alexjs'
+
 " For ALE
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_flake8_change_directory = 0
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'ruby': ['rubocop'],
       \   'python': ['black', 'ruff', 'ruff_format'],
+      \   'cs': ['clang-format'],
       \}
+
+let g:OmniSharp_server_use_net6 = 1
 
 " For nerdcommenter
 let g:NERDSpaceDelims = 1

@@ -165,6 +165,7 @@ install_dotfiles () {
   if [[ $os != "Codespaces" ]]
   then
     install_github_stuffs
+    install_i3ipc
   fi
   check_packages_are_installed
 
@@ -342,30 +343,6 @@ install_pip () {
   success 'installed pip'
 }
 
-install_the_fuck () {
-  info 'installing the fuck'
-  local_pip_install 'thefuck'
-  success 'installed the fuck'
-}
-
-install_virtualenv () {
-  info 'installing virtualenv'
-  local_pip_install 'virtualenv'
-  success 'installed virtualenv'
-}
-
-install_aws_cli () {
-  info 'installing aws cli'
-  local_pip_install 'awscli'
-  success 'installed aws cli'
-}
-
-install_shodan () {
-  info 'installing shodan cli'
-  local_pip_install 'shodan'
-  success 'installed shodan cli'
-}
-
 os_name () {
   set +e
   uname -a |grep 'Darwin' > /dev/null
@@ -399,54 +376,6 @@ local_npm_install () {
     ~/.local/bin/pip install --user $1 --upgrade
   fi
 
-}
-
-local_pip_install () {
-  os=$(os_name)
-  if [[ $os = "OSX" ]]
-  then
-    ~/Library/Python/2.7/bin/pip install --user $1 --upgrade
-  elif [[ $os = "Debian" ]]
-  then
-    /usr/bin/pip install --user $1 --upgrade
-  else
-    ~/.local/bin/pip install --user $1 --upgrade
-  fi
-}
-
-set_tmux_powerline_config () {
-  python_version=$(python -c 'import sys;sys.stdout.write(sys.version[0:4].strip("."))')
-  echo "11111"
-  echo $python_version
-  echo "2222222"
-
-  os=$(os_name)
-
-  if [[ $os = "OSX" ]]
-  then
-    local_pip_install 'psutil'
-    echo "source `ls ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/tmux/powerline.conf`" > ~/.tmux_powerline.conf
-  else
-    echo "source `ls ~/.local/lib/python$python_version/site-packages/powerline/bindings/tmux/powerline.conf`" > ~/.tmux_powerline.conf
-  fi
-}
-
-install_powerline () {
-  info 'installing powerline'
-
-  install_pip
-
-  local_pip_install 'powerline-status'
-  local_pip_install 'powerline-kubernetes'
-
-  set_tmux_powerline_config
-
-
-  src="$(pwd)/powerline"
-  dst="$HOME/.config/powerline"
-  link_file "$src" "$dst"
-
-  success 'installed powerline'
 }
 
 download_powerline_symbols () {
