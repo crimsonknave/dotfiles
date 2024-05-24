@@ -1,0 +1,269 @@
+{
+	"layer": "top",
+	"position": "bottom",
+
+	"modules-left": [
+		"sway/mode",
+		"sway/workspaces",
+		"custom/left-arrow"
+	],
+
+	"modules-center": [
+		"custom/arrow-center-left",
+		"sway/window",
+		"custom/arrow-center-right"
+	],
+
+	"modules-right": [
+		"custom/rarrow11",
+		"pulseaudio",
+		"custom/rarrow10",
+		"network",
+		"custom/rarrow9",
+    "disk",
+		"custom/rarrow8",
+		"memory",
+		"custom/rarrow7",
+		"cpu",
+		"custom/rarrow6",
+		"cpu#load",
+		"custom/rarrow5",
+		"temperature",
+		"custom/rarrow4",
+		"idle_inhibitor",
+		"custom/rarrow3",
+		"tray",
+		"custom/rarrow2",
+		"clock#date",
+		"custom/rarrow1",
+		"clock#time"
+	],
+
+	// Modules
+
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
+	},
+
+	"cpu#load": {
+		"interval": 5,
+		"tooltip": false,
+		"format": " {load}",
+		"on-click": "alacritty --config-file ~/.config/alacritty/top.toml -e top",
+		"max-length": 8,
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
+	},
+
+	"battery": {
+		"interval": 10,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format-time": "{H}:{M:02}",
+		"format": "{icon} {capacity}% ({time})",
+		"format-charging": " {capacity}% ({time})",
+		"format-charging-full": " {capacity}%",
+		"format-full": "{icon} {capacity}%",
+		"format-alt": "{icon} {power}W",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"tooltip": false
+	},
+
+	"clock#time": {
+		"interval": 10,
+		"format": "{:%H:%M}",
+		"tooltip": false
+	},
+
+	"clock#date": {
+		"interval": 20,
+		"format": "{:%e %b %Y}",
+		"tooltip": false
+		//"tooltip-format": "{:%e %B %Y}"
+	},
+
+  "disk": {
+    "format": " {percentage_free}% free"
+  },
+
+	"cpu": {
+		"interval": 5,
+		"tooltip": false,
+		"format": " {usage}%",
+		"on-click": "alacritty --config-file ~/.config/alacritty/top.toml -e top",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		}
+	},
+
+	"sway/language": {
+		"format": " {}",
+		"min-length": 5,
+		"on-click": "swaymsg 'input * xkb_switch_layout next'",
+		"tooltip": false
+	},
+
+	"memory": {
+		"interval": 5,
+		"format": " {used:0.1f}G/{total:0.1f}G",
+		"on-click": "alacritty --config-file ~/.config/alacritty/top.toml -e top -o '%MEM'",
+		"states": {
+			"warning": 70,
+			"critical": 90
+		},
+		"tooltip": false
+	},
+
+	"network": {
+		"interval": 5,
+		"format-wifi": " {essid} ({signalStrength}%)",
+		"format-ethernet": " {ifname}",
+		"format-disconnected": "No connection",
+		"format-alt": " {ipaddr}/{cidr}",
+		"tooltip": false
+	},
+
+	"sway/mode": {
+		"format": "{}",
+		"tooltip": false
+	},
+
+	"sway/window": {
+		"format": "{title}",
+		"max-length": 30,
+		"tooltip": false
+	},
+
+	"sway/workspaces": {
+		"disable-scroll-wraparound": true,
+		"smooth-scrolling-threshold": 4,
+		"enable-bar-scroll": true,
+		"format": "{name}"
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", ""]
+		},
+		"scroll-step": 1,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false
+	},
+
+	"temperature": {
+		"critical-threshold": 90,
+		"interval": 5,
+		"format": "{icon} {temperatureC}°",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"tooltip": false
+	},
+
+	"tray": {
+		"icon-size": 18
+		//"spacing": 10
+	},
+
+	"custom/rarrow1": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow2": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow3": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow4": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow5": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow6": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow7": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow8": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow9": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow10": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/rarrow11": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/left-arrow": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow-center-left": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/arrow-center-right": {
+		"format": "",
+		"tooltip": false
+	}
+
+}
+
+// vi:ft=jsonc
+
