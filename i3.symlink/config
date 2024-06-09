@@ -150,14 +150,14 @@ bindsym $mod+Ctrl+Left workspace prev
 #                 set $ws2 2:
 # If more are needed can do Ctrl or Alt and num
 # Left
-set $ws1 number 1:1:Main
-set $ws3 number 3:3:Focus
-set $ws5 number 5:5:?
+set $ws1 number 1:1:Browse
+set $ws3 number 3:3:Systems
+set $ws5 number 5:5:Code
 set $ws7 number 7:7:?
 # Right
-set $ws2 number 2:2:Code
-set $ws4 number 4:4:Updates
-set $ws6 number 6:6:?
+set $ws2 number 2:2:Chat
+set $ws4 number 4:4:Media
+set $ws6 number 6:6:RPG
 set $ws8 number 8:8:?
 
 
@@ -274,14 +274,17 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec_always --no-startup-id  swayidle -w \
-                      # timeout 300 'ddcutil setvcp 10 20 --display 1' \
-                      timeout 360 'swaylock -f -c 333333' \
-                      timeout 600 'systemctl suspend' \
-                      before-sleep 'swaylock -f -c 333333' \
-                      lock 'swaylock -f -c 333333' \
-                      # resume 'xrandr --output XWAYLAND2 --brightness 1;xrandr --output XWAYLAND3 --brightness 1' \
-                      # after-resume 'xrandr --output DP-0 --auto --primary --panning 0x0 --output DP-4 --auto --right-of DP-0;/usr/local/bin/workspace_fix'
+exec --no-startup-id  xidlehook \
+                      --not-when-fullscreen \
+                      --timer 300 \
+                      'xrandr --output DP-0 --brightness .2;xrandr --output DP-2 --brightness .2' \
+                      'xrandr --output DP-0 --brightness 1;xrandr --output DP-2 --brightness 1' \
+                      --timer 60 \
+                      'xrandr --output DP-0 --brightness 1;xrandr --output DP-2 --brightness 1;i3lock -c 333333' \
+                      '' \
+                      --timer 300 \
+                      'systemctl suspend' \
+                      ''
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor

@@ -18,7 +18,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'ap/vim-css-color'
 Plugin 'briancollins/vim-jst'
 Plugin 'dense-analysis/ale'
-Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'jparise/vim-graphql'
 Plugin 'kchmck/vim-coffee-script'
@@ -123,14 +122,19 @@ let ale_alex_executable = 'alexjs'
 " For ALE
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_flake8_change_directory = 0
+let g:ale_linters = {
+      \ 'cs': ['OmniSharp']
+      \}
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'ruby': ['rubocop'],
       \   'python': ['black', 'ruff', 'ruff_format'],
-      \   'cs': ['clang-format'],
+      \   'cs': ['dotnet-format'],
       \}
 
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_diagnostic_showid = 1
+autocmd FileType cs nmap <silent> <buffer> <Leader>os= <Plug>(omnisharp_code_format)
 
 " For nerdcommenter
 let g:NERDSpaceDelims = 1

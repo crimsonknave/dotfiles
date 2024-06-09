@@ -39,3 +39,4 @@ map <leader>n :lnext<cr>
 map <leader>p :lprev<cr>
 
 map <leader>f :ALEFix<cr>
+autocmd FileType cs map <leader>f :OmniSharpCodeFormat<cr>
