@@ -1,0 +1,311 @@
+/* Keyframes */
+
+@keyframes blink-critical {
+  to {
+    /*color: @white;*/
+    background-color: @critical;
+    /* font-size: 18pt; */
+    padding: 0px 5px;
+  }
+}
+
+
+/* Styles */
+
+/* Colors (gruvbox) */
+@define-color red #cc241d;
+@define-color green #98971a;
+@define-color yellow  #d79921;
+@define-color blue  #458588;
+@define-color purple  #b16286;
+@define-color aqua  #689d6a;
+@define-color gray  #a89984;
+@define-color orange  #d65d0e;
+
+@define-color brgray  #928374;
+@define-color brred #fb4934;
+@define-color brgreen #b8bb26;
+@define-color bryellow  #fabd2f;
+@define-color brblue  #83a598;
+@define-color brpurple  #d3869b;
+@define-color braqua  #8ec07c;
+@define-color brorange  #fe8019;
+
+@define-color fg1 #ebdbb2;
+@define-color white @fg1;
+@define-color bg #282828;
+@define-color bg1 #3c3836;
+@define-color bg2 #504945;
+@define-color bg3 #665c54;
+@define-color bg4 #7c6f64;
+@define-color black @bg;
+
+@define-color one @white;
+@define-color two @bg1;
+@define-color three @blue;
+@define-color four @purple;
+@define-color five @red;
+@define-color six @orange;
+@define-color seven @yellow;
+@define-color eight @green;
+@define-color nine @aqua;
+@define-color ten @bg4;
+@define-color eleven @bg1;
+
+@define-color warning   @bryellow;
+@define-color critical  @red;
+@define-color mode  @black;
+@define-color unfocused @bg2;
+@define-color focused @braqua;
+@define-color inactive  @brpurple;
+@define-color window @brblue;
+
+@define-color time  @one;
+@define-color date  @two;
+@define-color tray @three; 
+@define-color idle  @four;
+@define-color temp  @five;
+@define-color load @six;
+@define-color cpu @seven;
+@define-color memory  @eight;
+@define-color disk  @nine;
+@define-color network @ten;
+@define-color sound @eleven;
+
+/* Reset all styles */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  text-shadow: none;
+  icon-shadow: none;
+}
+
+/* The whole bar */
+#waybar {
+  background: @black;
+  color: @white;
+  /* font-family: DejaVu Sans Mono, Book; */
+  font-family: Noto Mono for Powerline;
+  font-size: 14pt;
+}
+
+/* Each module */
+#clock,
+#tray,
+#idle_inhibitor,
+#temperature,
+#cpu,
+#load,
+#memory,
+#disk,
+#network,
+#pulseaudio,
+#mode,
+#backlight,
+#user,
+#mpris {
+  padding-left: 8pt;
+  padding-right: 8pt;
+  color: @black;
+}
+
+/* Each critical module */
+#mode,
+#memory.critical,
+#cpu.critical,
+/*r#cpu, */
+#temperature.critical,
+#battery.critical.discharging {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: blink-critical;
+  animation-duration: 1s;
+}
+
+/* Each warning */
+#network.disconnected,
+#memory.warning,
+#cpu.warning,
+#temperature.warning,
+#battery.warning.discharging {
+  color: @warning;
+}
+
+/* And now modules themselves in their respective order */
+
+/* Current sway mode (resize etc) */
+#mode {
+  color: @white;
+  background: @mode;
+}
+
+/* Workspaces stuff */
+#workspaces button {
+  /*font-weight: bold;*/
+  padding-left: 5pt;
+  padding-right: 5pt;
+  color: @white;
+  background: @unfocused;
+}
+
+/* Inactive (on unfocused output) */
+#workspaces button.visible {
+  color: @black;
+  background: @inactive;
+}
+
+/* Active (on focused output) */
+#workspaces button.focused {
+  color: @black;
+  background: @focused;
+}
+
+/* Contains an urgent window */
+#workspaces button.urgent {
+  color: @black;
+  background: @warning;
+}
+
+/* Style when cursor is on the button */
+#workspaces button:hover {
+  background: @black;
+  color: @white;
+}
+
+#window {
+  /* margin-right: 35pt; */
+  /* margin-left: 35pt; */
+  padding: 0px 5px;
+  background: @window;
+  color: @black;
+}
+
+
+#waybar.empty #custom-arrow-center-left,
+#waybar.empty #custom-arrow-center-right,
+#waybar.empty #window {
+  background: @black;
+  color: @black;
+}
+
+#pulseaudio {
+  background: @sound;
+  color: @white;
+}
+
+#network {
+  background: @network;
+}
+
+#memory {
+  background: @memory;
+}
+
+#cpu {
+  background: @cpu;
+}
+
+#disk {
+  background: @disk;
+}
+
+#temperature {
+  background: @temp;
+  padding-left: 15px;
+}
+
+#idle_inhibitor {
+  background: @idle;
+}
+
+#cpu.load {
+  background: @load;
+}
+
+#tray {
+  background: @tray;
+}
+
+#clock.date {
+  background: @date;
+  color: @white;
+}
+
+#clock.time {
+  background: @time;
+}
+
+#custom-rarrow1 {
+  color: @one;
+  background: @two;
+}
+
+#custom-rarrow2 {
+  color: @two;
+  background: @three;
+}
+
+#custom-rarrow3 {
+  color: @three;
+  background: @four;
+}
+
+#custom-rarrow4 {
+  color: @four;
+  background: @five;
+}
+
+#custom-rarrow5 {
+  color: @five;
+  background: @six;
+}
+
+#custom-rarrow6 {
+  color: @six;
+  background: @seven;
+}
+
+#custom-rarrow7 {
+  color: @seven;
+  background: @eight;
+}
+
+#custom-rarrow8 {
+  color: @eight;
+  background: @nine;
+}
+
+#custom-rarrow9 {
+  color: @nine;
+  background: @ten;
+}
+
+#custom-rarrow10 {
+  color: @ten;
+  background: @eleven;
+}
+
+#custom-rarrow11 {
+  color: @eleven;
+  background: transparent;
+}
+
+#custom-left-arrow {
+  color: @unfocused;
+  background: transparent;
+}
+
+#custom-arrow-center-left {
+  color: @window;
+  background: transparent;
+}
+
+#custom-arrow-center-right {
+  color: @window;
+  background: transparent;
+}

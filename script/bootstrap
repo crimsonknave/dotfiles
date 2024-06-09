@@ -156,9 +156,13 @@ install_dotfiles () {
     link_file "$src" "$dst"
   done
 
-  install_alacritty_config
   update_submodules
-  run_vundle
+  install_alacritty_config
+  install_powerlevel10k_theme
+  install_nvim_config
+  install_sway_config
+  install_waybar_config
+  # run_vundle
   init_command_t
   setup_oh_my_zsh
   os=$(os_name)
@@ -166,7 +170,7 @@ install_dotfiles () {
   then
     install_github_stuffs
   fi
-  check_packages_are_installed
+  #check_packages_are_installed
 
   success 'laid down dotfiles'
 }
@@ -217,11 +221,19 @@ check_packages_are_installed () {
   check_package "zsh-history-substring-search"
   check_package "zsh-syntax-highlighting"
   check_package "zsh-theme-powerlevel10k"
-  if [ ! -z $package_list ];then
+  echo $package_list
+  if [ ! -z "$package_list" ];then
     info "Installing missing packages"
-    yay_string="yay -Sy$package_list"
-    echo $yay_string
-    $yay_string
+
+    os=$(os_name)
+    if [[ $os = "Ubuntu" ]]
+    then
+      install_string="apt install $package_list"
+    else
+      install_string="yay -Sy$package_list"
+    fi
+    echo $install_string
+    $install_string
   fi
 }
 
@@ -236,9 +248,15 @@ update_submodules () {
 
 run_vundle () {
   info 'running vundle'
+  
+  if [ `which nvim` ];then
+    vim_bin="nvim"
+  else
+    vim_bin="vim"
+  fi
 
-  vim +PluginInstall +qall
-  vim +PluginUpdate +qall
+  $vim_bin +PluginInstall +qall
+  $vim_bin +PluginUpdate +qall
 
   success 'vundle all set'
 }
@@ -264,7 +282,6 @@ init_command_t () {
   info 'initializing command t'
 
   # Check for ruby in vim and skip if it is missing
-  set +e
   vim --version |grep +ruby > /dev/null
   code=$?
   set -e
@@ -277,6 +294,7 @@ init_command_t () {
   start_dir=`pwd`
   cd ~/.vim/bundle/Command-T/ruby/command-t/ext/command-t
   make clean
+  set +e
   /usr/bin/ruby extconf.rb
   make
   cd $start_dir
@@ -316,12 +334,63 @@ install_github_stuffs () {
   success "linked $src to $dst"
 }
 
+install_powerlevel10k_theme () {
+  info 'installing powerlevel10k theme'
+
+  src="$(pwd)/powerlevel10k"
+  dst="$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+  link_file "$src" "$dst"
+
+}
+
 install_alacritty_config () {
   info 'installing alacritty config file'
 
   mkdir -p ~/.config/alacritty
   src="$(pwd)/alacritty/alacritty.toml"
   dst="$HOME/.config/alacritty/alacritty.toml"
+  link_file "$src" "$dst"
+
+  src="$(pwd)/alacritty/top.toml"
+  dst="$HOME/.config/alacritty/top.toml"
+  link_file "$src" "$dst"
+}
+
+install_nvim_config () {
+  info 'installing neovim config file'
+
+  mkdir -p ~/.config/nvim
+  src="$(pwd)/vim/init.vim"
+  dst="$HOME/.config/nvim/init.vim"
+  link_file "$src" "$dst"
+}
+
+install_sway_config () {
+  info 'installing sway config file'
+
+  mkdir -p ~/.config/sway
+  src="$(pwd)/sway/config"
+  dst="$HOME/.config/sway/config"
+  link_file "$src" "$dst"
+
+  src="$(pwd)/sway/screenshare.sh"
+  dst="$HOME/.config/sway/screenshare.sh"
+  link_file "$src" "$dst"
+
+}
+
+install_waybar_config () {
+  info 'installing waybar config file'
+
+  mkdir -p ~/.config/waybar
+  # src="$(pwd)/sway/waybar/config"
+  src="$(pwd)/sway/waybar/config-2"
+  dst="$HOME/.config/waybar/config"
+  link_file "$src" "$dst"
+
+  # src="$(pwd)/sway/waybar/style.css"
+  src="$(pwd)/sway/waybar/style-2.css"
+  dst="$HOME/.config/waybar/style.css"
   link_file "$src" "$dst"
 }
 
@@ -348,6 +417,8 @@ os_name () {
   mac=$?
   uname -a |grep 'Debian' > /dev/null
   deb=$?
+  uname -a |grep 'Ubuntu' > /dev/null
+  ubuntu=$?
   uname -a |grep 'codespaces' > /dev/null
   codespaces=$?
   set -e
@@ -357,6 +428,9 @@ os_name () {
   elif [[ $deb -eq 0 ]]
   then
     echo 'Debian'
+  elif [[ $ubuntu -eq 0 ]]
+  then
+    echo 'Ubuntu'
   elif [[ $codespaces -eq 0 ]]
   then
     echo 'Codespaces'
