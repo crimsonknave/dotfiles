@@ -201,6 +201,14 @@ for_window {
   [title="^top$"] floating enable
   [app_id="^pavucontrol$"] floating enable
 }
+for_window [class=".*"] inhibit_idle fullscreen
+for_window [app_id=".*"] inhibit_idle fullscreen
+
+# Inhibit idle while these are open
+for_window {
+  [title="Zoom Meeting"] inhibit_idle
+}
+
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
