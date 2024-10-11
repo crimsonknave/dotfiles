@@ -200,13 +200,14 @@ for_window {
   [title="File Transfer*"] floating enable
   [title="^top$"] floating enable
   [app_id="^pavucontrol$"] floating enable
+  [app_id="zoom" title="^zoom$"] floating enable
 }
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
 
 # Inhibit idle while these are open
 for_window {
-  [title="Zoom Meeting"] inhibit_idle
+  [title="Zoom Meeting.*"] inhibit_idle open
 }
 
 
