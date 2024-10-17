@@ -1,5 +1,6 @@
 [font]
 size = 13.0
+normal = { family = "FiraCode Nerd Font" }
 
 [mouse]
 hide_when_typing = true

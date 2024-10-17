@@ -31,13 +31,20 @@ font pango:UbuntuMono 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
+# No, really kill the focused window
+bindsym $mod+Ctrl+Shift+q exec .config/sway/go_away.sh
+
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run
+for_window [title="^sway-launcher-desktop$"] floating enable, sticky enable, border pixel 10
+#, resize set 30 ppt 60 ppt, border pixel 10
+set $menu exec alacritty --config-file ~/.config/alacritty/sway-launcher-desktop.toml  -e sway-launcher-desktop
+bindsym $mod+d exec $menu
 
 # launch categorized menu
 bindsym $mod+Shift+z exec --no-startup-id morc_menu
@@ -210,6 +217,8 @@ for_window {
   [title="Zoom Meeting.*"] inhibit_idle open
 }
 
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -277,16 +286,13 @@ exec --no-startup-id /usr/bin/swayidle -w timeout 360 'swaylock -f -c 333333'  t
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
-output DP-2 pos 0 0
+output DP-1 pos 0 0
 output DP-3 pos 3840 0
-workspace $ws1 output DP-2
+workspace $ws1 output DP-1
 workspace $ws2 output DP-3
 workspace $ws3 output DP-3
 workspace $ws4 output DP-3
-workspace $ws5 output DP-2
-workspace 5 output DP-2
-workspace 5:5:? output DP-2
-workspace 5:? output DP-2
+workspace $ws5 output DP-1
 #
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

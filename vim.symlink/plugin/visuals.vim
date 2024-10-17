@@ -1,10 +1,11 @@
 set background=dark
-silent! color jellybeans
+" silent! color jellybeans
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " For airline
 " set guifont="Ubuntu\ Mono\ for\ Powerline\ 10"
 let g:airline_powerline_fonts = 1
-let g:airline_theme="durant"
+" let g:airline_theme="durant"
 
 " 256 colors
 set t_Co=256
