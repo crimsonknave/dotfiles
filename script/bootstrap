@@ -228,6 +228,7 @@ check_packages_are_installed () {
   check_package "foot"
   check_package "font-manager"
   check_package "fzf"
+  check_package "hatch"
   check_package "gimp"
   check_package "git"
   check_package "gnome-calculator"
@@ -238,6 +239,7 @@ check_packages_are_installed () {
   check_package "lshw"
   check_package "lsof"
   check_package "man-db"
+  check_package "pipenv"
   check_package "pipewire"
   check_package "playerctl"
   check_package "pwvucontrol"
@@ -250,6 +252,7 @@ check_packages_are_installed () {
   check_package "swayidle"
   check_package "swaylock"
   check_package "thefuck"
+  check_package "thunar"
   check_package "tmux"
   check_package "tmux-plugin-manager"
   check_package "traceroute"
@@ -540,7 +543,7 @@ install_dotfiles
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
-  if source bin/dot > /tmp/dotfiles-dot 2>&1
+  ff source bin/dot > /tmp/dotfiles-dot 2>&1
   then
     success "dependencies installed"
   else

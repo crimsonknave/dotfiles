@@ -1,6 +1,6 @@
 * Tmux plugins
   * Tmux sensible?
-  * powerline
-  * remove tmux-power director
   
 * Keymap for tmux, like I have for vim
+
+* Figure out how to color the warnings and errors
