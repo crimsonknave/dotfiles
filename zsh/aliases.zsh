@@ -21,3 +21,5 @@ alias yolo='sudo'
 function set-title() {
   echo -ne "\033]0;$1\007"
 }
+
+alias psgrep='ps -ef |grep'

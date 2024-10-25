@@ -2,6 +2,7 @@ unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
 bind-key C-a last-window
+# bind-key C-b last-window
 
 setw -g mode-keys vi
 
@@ -13,7 +14,14 @@ bind l select-pane -R
 
 # moving between windows with vim movement keys
 bind -r C-h select-window -t :-
+bind -r C-j select-window -t :^
+bind -r C-k select-window -t :$
 bind -r C-l select-window -t :+
+
+# Scroll with the wheel
+# set-option -g mouse "on"
+# bind -n WheelUpPane if -Ft= "#{mouse_any_flag}" "send -M" "send Up"
+# bind -n WheelDownPane if -Ft= "#{mouse_any_flag}" "send -M" "send Down"
 
 # Remove n and p to train myself out of using them
 unbind-key n
@@ -28,11 +36,18 @@ bind -r L resize-pane -R 5
 # Allow for reaload
 bind R source-file ~/.tmux.conf \; display-message "Config reloaded!"
 
-set -g @tmux_power_theme 'coral'
-run-shell "$HOME/.dotfiles/tmux/tmux-power/tmux-power.tmux"
 
 #Titles
 set -g set-titles on
 set -g set-titles-string 'tmux:#S:#I'
 set -g automatic-rename
 # set-option -g default-command "/usr/bin/zsh -l"
+
+# TPM
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+run '/usr/share/tmux-plugin-manager/tpm'
+
+# Manual statuline
+run '~/.dotfiles/tmux/theme.sh'

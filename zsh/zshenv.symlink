@@ -11,7 +11,7 @@ MAC=$?
 # Can we run powerline?
 # python -c 'import sys; sys.version_info < (2,6) and sys.exit(1)'
 # POWERLINE_CAPABLE=$?
-POWERLINE_CAPABLE=1
+# POWERLINE_CAPABLE=1
 
 # all of our zsh files
 typeset -U config_files

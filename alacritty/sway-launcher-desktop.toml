@@ -1,0 +1,4 @@
+[window]
+title = "sway-launcher-desktop"
+decorations = "None"
+dimensions = { columns = 50, lines = 15 }
