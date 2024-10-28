@@ -2,6 +2,9 @@ set background=dark
 " silent! color jellybeans
 autocmd vimenter * ++nested colorscheme gruvbox
 
+" Highlighting warnings and errors doesn't work for omnisharp without this
+let g:gruvbox_guisp_fallback = 'bg'
+
 " For airline
 " Search in https://www.nerdfonts.com/cheat-sheet
 let g:airline_theme="gruvbox_dark"
@@ -21,13 +24,17 @@ function! AirlineCustomizations ()
   let g:airline_left_sep = ""
   let g:airline_left_alt_sep = ""
   echo "custom"
+
 endfunction
 autocmd User AirlineAfterInit call AirlineCustomizations()
 
 " 256 colors
-set t_Co=256
+" set t_Co=256
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " set command bar height
 set cmdheight=1
 
-
+let g:colorizer_auto_filetype = "html,css,markdown,vim"

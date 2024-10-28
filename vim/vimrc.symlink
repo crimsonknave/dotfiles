@@ -9,42 +9,49 @@ let g:CommandTPreferredImplementation='ruby'
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'Keithbsmiley/rspec.vim'
-Plugin 'Lokaltog/vim-distinguished'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'ap/vim-css-color'
-Plugin 'briancollins/vim-jst'
+" Actively used
+" Plugin 'ap/vim-css-color'
+Plugin 'chrisbra/Colorizer'
 Plugin 'dense-analysis/ale'
-Plugin 'gcmt/wildfire.vim'
 Plugin 'jparise/vim-graphql'
+Plugin 'mileszs/ack.vim'
+Plugin 'gruvbox-community/gruvbox'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/vim-peekaboo'
+Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+Plugin 'OmniSharp/OmniSharp-vim'
+Plugin 'scrooloose/nerdcommenter'
+
+" Should actually remember exists and make use of
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-abolish' " Spelling fixes and children -> adult
+Plugin 'tpope/vim-speeddating' " date manipulation
+
+" New and should learn to use
+Plugin 'tpope/vim-dadbod' " databases in vim!
+Plugin 'tpope/vim-dispatch' " run tests and other scripts in vim with tmux integration
+
+" Would be used if I wrote in X anymore
+Plugin 'Keithbsmiley/rspec.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'MaxMEllon/vim-jsx-pretty'
-Plugin 'mileszs/ack.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'morhetz/gruvbox'
 Plugin 'puppetlabs/puppet-syntax-vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'briancollins/vim-jst'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vividchalk'
-Plugin 'wesQ3/vim-windowswap'
-Plugin 'wincent/Command-T'
 Plugin 'yaymukund/vim-rabl'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'OmniSharp/OmniSharp-vim'
+
+" Not sure if used
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'gcmt/wildfire.vim'
+" Plugin 'tomtom/tlib_vim'
+
 call vundle#end()
 
 syntax on
@@ -150,5 +157,15 @@ let g:multi_cursor_exit_from_insert_mode = 0
 set title
 set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 
+" Ack/Ag
 " Quickfix window (ack) goes to last used window instead of 'above'
 set switchbuf=uselast
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" I use H/L to page, so don't let it open windows
+let g:ack_mappings = { "H": "" }
+
+" fzf
+let g:fzf_vim = {}

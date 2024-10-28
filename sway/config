@@ -281,17 +281,18 @@ bindsym $mod+9 exec --no-startup-id swaylock -c 333333
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
+# for_window [title=".*"] inhibit_idle fullscreen
 exec --no-startup-id /usr/bin/swayidle -w timeout 360 'swaylock -f -c 333333'  timeout 600 'systemctl suspend'  before-sleep 'swaylock -f -c 333333'  lock 'swaylock -f -c 333333'
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 output DP-1 pos 0 0
-output DP-3 pos 3840 0
+output DP-2 pos 3840 0
 workspace $ws1 output DP-1
-workspace $ws2 output DP-3
-workspace $ws3 output DP-3
-workspace $ws4 output DP-3
+workspace $ws2 output DP-2
+workspace $ws3 output DP-2
+workspace $ws4 output DP-2
 workspace $ws5 output DP-1
 #
 # Color palette used for the terminal ( ~/.Xresources file )
