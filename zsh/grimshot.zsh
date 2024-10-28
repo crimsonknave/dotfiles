@@ -1,1 +1,1 @@
-export XDG_SCREENSHOTS_DIR="/home/crimsonknave/Screenshots"
+export XDG_SCREENSHOTS_DIR="$HOME/Screenshots"

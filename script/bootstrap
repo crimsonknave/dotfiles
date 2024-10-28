@@ -216,21 +216,22 @@ check_packages_are_installed () {
   build_yay
   package_list=""
   check_package "1password"
-  check_package "ack"
-  check_package "alacritty"
   check_package "android-messages-desktop-bin"
   check_package "autojump"
+  check_package "bat"
   check_package "clang"
+  check_package "ctags"
   check_package "discord"
   check_package "docker"
   check_package "dunst"
+  check_package "fd"
   check_package "firefox"
-  check_package "foot"
   check_package "font-manager"
   check_package "fzf"
   check_package "hatch"
   check_package "gimp"
   check_package "git"
+  check_package "git-delta"
   check_package "gnome-calculator"
   check_package "google-chat-linux-bin"
   check_package "grimshot"
@@ -244,6 +245,7 @@ check_packages_are_installed () {
   check_package "playerctl"
   check_package "pwvucontrol"
   check_package "pyenv"
+  check_package "ripgrep"
   check_package "slack-desktop"
   check_package "spotify"
   check_package "starship"
@@ -252,6 +254,7 @@ check_packages_are_installed () {
   check_package "swayidle"
   check_package "swaylock"
   check_package "thefuck"
+  check_package "the_silver_searcher"
   check_package "thunar"
   check_package "tmux"
   check_package "tmux-plugin-manager"
@@ -543,7 +546,7 @@ install_dotfiles
 if [ "$(uname -s)" == "Darwin" ]
 then
   info "installing dependencies"
-  ff source bin/dot > /tmp/dotfiles-dot 2>&1
+  if source bin/dot > /tmp/dotfiles-dot 2>&1
   then
     success "dependencies installed"
   else

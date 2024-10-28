@@ -67,7 +67,7 @@ let g:airline#themes#gruvbox_dark#palette.insert_modified = s:modified
 let g:airline#themes#gruvbox_dark#palette.insert.airline_warning = s:warning
 let g:airline#themes#gruvbox_dark#palette.insert.airline_error = s:error
 let g:airline#themes#gruvbox_dark#palette.insert_paste = {
-      \ 'airline_a': s:color_list(s:gb.light1, s:gb.neutral_yellow, ''),
+      \ 'airline_a': s:color_list(s:gb.dark0, s:gb.neutral_yellow, ''),
       \ }
 
 let g:airline#themes#gruvbox_dark#palette.terminal = airline#themes#generate_color_map(s:airline_a_insert, s:airline_b_insert, s:airline_c_insert)
@@ -75,8 +75,8 @@ let g:airline#themes#gruvbox_dark#palette.terminal = airline#themes#generate_col
 let g:airline#themes#gruvbox_dark#palette.replace = copy(g:airline#themes#gruvbox_dark#palette.insert)
 let g:airline#themes#gruvbox_dark#palette.replace.airline_a = s:color_list(s:gb.light1, s:gb.neutral_red, '')
 let g:airline#themes#gruvbox_dark#palette.replace_modified = s:modified
-let g:airline#themes#gruvbox_dark#palette.insert.airline_warning = s:warning
-let g:airline#themes#gruvbox_dark#palette.insert.airline_error = s:error
+let g:airline#themes#gruvbox_dark#palette.replace.airline_warning = s:warning
+let g:airline#themes#gruvbox_dark#palette.replace.airline_error = s:error
 
 
 let s:airline_a_visual = s:color_list(s:gb.dark0, s:gb.faded_yellow, '')

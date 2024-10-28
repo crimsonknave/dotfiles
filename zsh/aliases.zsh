@@ -23,3 +23,6 @@ function set-title() {
 }
 
 alias psgrep='ps -ef |grep'
+
+alias ack='ag'
+alias cat='bat'

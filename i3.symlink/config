@@ -274,17 +274,17 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id  xidlehook \
-                      --not-when-fullscreen \
-                      --timer 300 \
-                      'xrandr --output DP-0 --brightness .2;xrandr --output DP-2 --brightness .2' \
-                      'xrandr --output DP-0 --brightness 1;xrandr --output DP-2 --brightness 1' \
-                      --timer 60 \
-                      'xrandr --output DP-0 --brightness 1;xrandr --output DP-2 --brightness 1;i3lock -c 333333' \
-                      '' \
-                      --timer 300 \
-                      'systemctl suspend' \
-                      ''
+# exec --no-startup-id  xidlehook \
+                      # --not-when-fullscreen \
+                      # --timer 300 \
+                      # 'xrandr --output DP-0 --brightness .2;xrandr --output DP-2 --brightness .2' \
+                      # 'xrandr --output DP-0 --brightness 1;xrandr --output DP-2 --brightness 1' \
+                      # --timer 60 \
+                      # 'xrandr --output DP-0 --brightness 1;xrandr --output DP-2 --brightness 1;i3lock -c 333333' \
+                      # '' \
+                      # --timer 300 \
+                      # 'systemctl suspend' \
+                      # ''
 
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor

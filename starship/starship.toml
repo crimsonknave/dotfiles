@@ -11,6 +11,7 @@ $git_branch\
 $git_status\
 [](fg:color_git bg:color_lang)\
 $c\
+$dotnet\
 $rust\
 $golang\
 $nodejs\
@@ -154,6 +155,11 @@ format = '[[ $symbol( $version) ](fg:color_lang_text bg:color_lang)]($style)'
 
 [c]
 symbol = " "
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:color_lang_text bg:color_lang)]($style)'
+
+[dotnet]
+symbol = ".net"
 style = "bg:color_lang"
 format = '[[ $symbol( $version) ](fg:color_lang_text bg:color_lang)]($style)'
 
