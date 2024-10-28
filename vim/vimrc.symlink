@@ -152,3 +152,5 @@ set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70
 
 " Quickfix window (ack) goes to last used window instead of 'above'
 set switchbuf=uselast
+
+let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'bash=sh']

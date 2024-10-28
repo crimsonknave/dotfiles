@@ -89,7 +89,8 @@
   background: @black;
   color: @white;
   /* font-family: DejaVu Sans Mono, Book; */
-  font-family: Noto Mono for Powerline;
+  /* font-family: Noto Mono for Powerline; */
+  font-family: Fira Code Nerd Font;
   font-size: 14pt;
 }
 

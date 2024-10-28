@@ -7,7 +7,7 @@
 run_step () {
   echo $1
   swaymsg "$1"
-  sleep 0.7
+  sleep 1
 }
 
 run_step "workspace 1:1:Main"
