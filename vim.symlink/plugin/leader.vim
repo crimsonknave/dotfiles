@@ -10,18 +10,16 @@ let mapleader = ','
 " nmap <leader>w :w<cr>
 
 map <leader><space> :noh<cr>
-map <leader>a :Ack!<Space>
 map <leader>e :Explore<cr> 
 
-
-" Toggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
 " Spelling shortcuts
+" map <leader>ss :setlocal spell!<cr>
+map <leader>ss :call ToggleSpell()<cr>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
-map <leader>s? z=
+map <leader>s? :call FzfSpell()<cr>
+map <leader>s/ :call FzfSpell()<cr>
 
 map <leader>v :vs<cr>
 map <leader>s :sp<cr>
@@ -56,7 +54,9 @@ nmap <leader>t :GFiles<cr>
 nmap <leader>T :Files<cr>
 
 nmap <leader>rg :Rg <C-R><C-W><CR>
-nmap <Leader>ag :Ag <C-R><C-W><CR>
+nmap <Leader>* :Ag <C-R><C-W><CR>
+nmap <Leader>a :Ag <CR>
+" map <leader>a :Ack!<Space>
 
 "tags
 nmap <leader>ct :Tags<cr>

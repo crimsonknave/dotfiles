@@ -175,8 +175,9 @@ install_dotfiles () {
   install_sway_config
   install_waybar_config
   create_directories
-  # run_vundle
-  init_command_t
+	vundle_install
+	vundle_update
+	vundle_clean
 
   success 'laid down dotfiles'
 }
@@ -297,8 +298,8 @@ update_submodules () {
   success 'submodules all loaded'
 }
 
-run_vundle () {
-  info 'running vundle'
+vundle_install () {
+  info 'installing plugins via vundle'
   
   if [ `which nvim` ];then
     vim_bin="nvim"
@@ -307,32 +308,34 @@ run_vundle () {
   fi
 
   $vim_bin +PluginInstall +qall
-  $vim_bin +PluginUpdate +qall
 
-  success 'vundle all set'
+  success 'plugins installed all set'
 }
-
-init_command_t () {
-  info 'initializing command t'
-
-  # Check for ruby in vim and skip if it is missing
-  vim --version |grep +ruby > /dev/null
-  code=$?
-  set -e
-  if [[ $code -ne 0 ]]
-  then
-    info 'Vim not compiled with ruby, skipping command t'
-    return
+vundle_update () {
+  info 'updating plugins via vundle'
+  
+  if [ `which nvim` ];then
+    vim_bin="nvim"
+  else
+    vim_bin="vim"
   fi
 
-  start_dir=`pwd`
-  cd ~/.vim/bundle/Command-T/ruby/command-t/ext/command-t
-  make clean
-  set +e
-  /usr/bin/ruby extconf.rb
-  make
-  cd $start_dir
-  success 'initialized command t'
+  $vim_bin +PluginUpdate +qall
+
+  success 'plugins updated'
+}
+vundle_clean () {
+  info 'cleaning unused plugins via vundle'
+  
+  if [ `which nvim` ];then
+    vim_bin="nvim"
+  else
+    vim_bin="vim"
+  fi
+
+  $vim_bin +PluginClean +qall
+
+  success 'plugins cleaned'
 }
 
 setup_oh_my_zsh () {
