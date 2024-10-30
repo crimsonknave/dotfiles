@@ -3,8 +3,9 @@
 set nocompatible
 filetype off
 
-let g:CommandTPreferredImplementation='ruby'
-" let g:CommandTPreferredImplementation='lua'
+" Remove ALL autocommands for the current group.
+" This prevents autocommands from getting duplicated on vimrc reloads
+autocmd!
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -25,6 +26,8 @@ Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 Plugin 'OmniSharp/OmniSharp-vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'psliwka/vim-dirtytalk'
 
 " Should actually remember exists and make use of
 Plugin 'AndrewRadev/splitjoin.vim'
@@ -95,7 +98,11 @@ set wrap
 " :20  :  up to 20 lines of command-line history will be remembered
 " %    :  saves and restores the buffer list
 " n... :  where to save the viminfo files
-set viminfo='100,\"100,:20,%,n~/.viminfo
+if !has('nvim')
+  set viminfo='100,\"100,:20,%,n~/.viminfo
+else
+  set shada='100,\"100,s100,:20,%,n~/.shada
+endif
 
 function! ResCur()
   if line("'\"") <= line("$")
@@ -110,10 +117,6 @@ augroup resCur
 augroup END
 
 set showcmd
-if version >= 700
-  set spl=en spell
-  set nospell
-endif
 
 let g:clipbrdDefaultReg = '+'
 
