@@ -216,6 +216,8 @@ for_window [app_id=".*"] inhibit_idle fullscreen
 # Inhibit idle while these are open
 for_window {
   [title="Zoom Meeting.*"] inhibit_idle open
+  [title="[XWayland] Meeting.*"] inhibit_idle open
+  [title="Meeting.*"] inhibit_idle open
 }
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"

@@ -31,6 +31,7 @@
 		"temperature",
 		"custom/rarrow4",
 		"idle_inhibitor",
+		"custom/keylight",
 		"custom/rarrow3",
 		"tray",
 		"custom/rarrow2",
@@ -103,7 +104,7 @@
 	"cpu": {
 		"interval": 5,
 		"tooltip": false,
-		"format": " {usage}%",
+		"format": " {usage:0>2d}%",
 		"on-click": "alacritty --config-file ~/.config/alacritty/top.toml -e top",
 		"states": {
 			"warning": 70,
@@ -120,7 +121,7 @@
 
 	"memory": {
 		"interval": 5,
-		"format": " {used:0.1f}G/{total:0.1f}G",
+		"format": "{used:0.1f}G/{total:0.1f}G",
 		"on-click": "alacritty --config-file ~/.config/alacritty/top.toml -e top -o '%MEM'",
 		"states": {
 			"warning": 70,
@@ -132,7 +133,7 @@
 	"network": {
 		"interval": 5,
 		"format-wifi": "  {essid} ({signalStrength}%)",
-		"format-ethernet": "  {ifname}",
+		"format-ethernet": " {ifname}",
 		"format-disconnected": "No connection",
 		"format-alt": " {ipaddr}/{cidr}",
 		"tooltip": false
@@ -146,7 +147,11 @@
 	"sway/window": {
 		"format": "{title}",
 		"max-length": 30,
-		"tooltip": false
+		"tooltip": false,
+		"icon": true,
+		// "all-outputs": true,
+		// "offscreen-css": true,
+		// "offscreen-css-text": "(inactive)",
 	},
 
 	"sway/workspaces": {
@@ -261,7 +266,18 @@
 	"custom/arrow-center-right": {
 		"format": "",
 		"tooltip": false
+	},
+	"custom/keylight": {
+		"format": "",
+		"tooltip": "Toggle Keylight",
+		"on-click": "$HOME/.dotfiles/sway/waybar/keylight.sh",
+		"exec": "$HOME/.dotfiles/sway/waybar/keylight.sh status",
+		"exec-on-event": true,
+		"return-type": "json",
+		"interval": 1,
+		"escape": false,
 	}
+
 
 }
 
