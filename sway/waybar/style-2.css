@@ -153,6 +153,7 @@
   padding-right: 5pt;
   color: @black;
   background: @unfocused;
+  font-weight: 500;
 }
 
 /* Inactive (on unfocused output) */
@@ -163,11 +164,13 @@
 /* Active (on focused output) */
 #workspaces button.focused {
   background: @focused;
+  font-weight: 500;
 }
 
 /* Contains an urgent window */
 #workspaces button.urgent {
   background: @warning;
+  font-weight: 500;
 }
 
 /* Style when cursor is on the button */
@@ -182,6 +185,7 @@
   padding: 0px 5px;
   background: @window;
   color: @black;
+  font-weight: 500;
 }
 
 
@@ -224,6 +228,7 @@
 
 #custom-keylight {
   background: @idle;
+  margin-left: -10px;
 }
 
 #custom-keylight.on {

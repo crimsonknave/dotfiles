@@ -87,7 +87,6 @@ let g:airline#themes#gruvbox_dark#palette.visual_modified = s:modified
 let g:airline#themes#gruvbox_dark#palette.visual.airline_warning = s:warning
 let g:airline#themes#gruvbox_dark#palette.visual.airline_error = s:error
 
-
 let s:airline_a_inactive = s:color_list(s:gb.dark2, s:gb.dark0_hard, '')
 let s:airline_b_inactive = s:color_list(s:gb.dark2, s:gb.dark0, '')
 let s:airline_c_inactive = s:color_list(s:gb.light4, s:gb.dark0_soft, '')

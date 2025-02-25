@@ -30,4 +30,11 @@ function jumpme() {
   set-title 'SSH Enabled'
 }
 
+function jumpto() {
+  ssh-setup
+  set-title 'Jumping'
+  kitty +kitten ssh -J bastion -o "StrictHostKeyChecking no" $1
+  set-title 'SSH Enabled'
+}
+
 alias intune-portal='WEBKIT_DISABLE_DMABUF_RENDERER=1 /opt/microsoft/intune/bin/intune-portal'

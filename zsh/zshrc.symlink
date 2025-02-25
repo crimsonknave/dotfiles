@@ -37,6 +37,7 @@ plugins=(
   # python
   rails
   rake-fast
+  rbenv
   ruby
   # rvm
   systemd
