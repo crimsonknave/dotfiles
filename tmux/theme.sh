@@ -1,9 +1,9 @@
 #!/usr/bin/bash
-window_bg="#8f3f71"
-window_current_bg="#83a598"
-window_last_bg="#d3869b"
+window_bg="#458588"
+window_current_bg="#98971a"
+window_last_bg="#689d6a"
 window_active_text="#282828"
-window_text="#ebdbb2"
+window_text="#282828"
 bg_color="#282828"
 name_bg_color="#ebdbb2"
 name_fg_color="#282828"

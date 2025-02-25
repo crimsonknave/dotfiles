@@ -28,8 +28,9 @@ run_step "split toggle"
 run_step "layout tabbed"
 run_step "exec google-chat-linux"
 run_step 'exec "/opt/Android Messages/AndroidMessages" --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --no-sandbox'
+# Slack and discord are inconsistent in open speed, do them last and sleep some, then just move it
 run_step "exec discord"
-# Slack is inconsistent in it's open speed, do it last and then just move it
+sleep 2
 run_step "exec slack"
 sleep 5
 run_step "move down"

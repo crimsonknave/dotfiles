@@ -54,8 +54,9 @@ nmap <leader>t :GFiles<cr>
 nmap <leader>T :Files<cr>
 
 nmap <leader>rg :Rg <C-R><C-W><CR>
-nmap <Leader>* :Ag <C-R><C-W><CR>
-nmap <Leader>a :Ag <CR>
+nmap <Leader>* :AgOnlyContents <C-R><C-W><CR>
+nmap <Leader>a :AgOnlyContents <CR>
+nmap <Leader>A :Ag <CR>
 " map <leader>a :Ack!<Space>
 
 "tags
@@ -69,3 +70,10 @@ nmap <leader>c :Commands<cr>
 " Numbers
 nmap <leader>i <C-a>
 nmap <leader>d <C-x>
+
+" Color
+nmap <leader>ch :ColorToggle
+
+" Coverage
+nmap <leader>hc :HighlightCoverage <CR>
+nmap <leader>hco :HighlightCoverageOff <CR>

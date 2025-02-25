@@ -55,10 +55,10 @@
 @define-color warning   @bryellow;
 @define-color critical  @red;
 @define-color mode  @black;
-@define-color unfocused @bg2;
-@define-color focused @braqua;
-@define-color inactive  @brpurple;
-@define-color window @brblue;
+@define-color unfocused @blue;
+@define-color focused @green;
+@define-color inactive  @aqua;
+@define-color window @green;
 
 @define-color time  @one;
 @define-color date  @two;
@@ -98,6 +98,7 @@
 #clock,
 #tray,
 #idle_inhibitor,
+#custom-keylight,
 #temperature,
 #cpu,
 #load,
@@ -147,29 +148,29 @@
 
 /* Workspaces stuff */
 #workspaces button {
-  /*font-weight: bold;*/
+  /* font-weight: bold; */
   padding-left: 5pt;
   padding-right: 5pt;
-  color: @white;
+  color: @black;
   background: @unfocused;
+  font-weight: 500;
 }
 
 /* Inactive (on unfocused output) */
 #workspaces button.visible {
-  color: @black;
   background: @inactive;
 }
 
 /* Active (on focused output) */
 #workspaces button.focused {
-  color: @black;
   background: @focused;
+  font-weight: 500;
 }
 
 /* Contains an urgent window */
 #workspaces button.urgent {
-  color: @black;
   background: @warning;
+  font-weight: 500;
 }
 
 /* Style when cursor is on the button */
@@ -184,6 +185,7 @@
   padding: 0px 5px;
   background: @window;
   color: @black;
+  font-weight: 500;
 }
 
 
@@ -222,6 +224,15 @@
 
 #idle_inhibitor {
   background: @idle;
+}
+
+#custom-keylight {
+  background: @idle;
+  margin-left: -10px;
+}
+
+#custom-keylight.on {
+  color: @bryellow;
 }
 
 #cpu.load {
@@ -296,6 +307,10 @@
   background: transparent;
 }
 
+#custom-round-opening {
+  color: @unfocused;
+  background: transparent;
+}
 #custom-left-arrow {
   color: @unfocused;
   background: transparent;

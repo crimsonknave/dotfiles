@@ -170,6 +170,7 @@ install_dotfiles () {
   install_tmux_powerline_config
   install_foot_config
   install_starship_config
+  install_bat_config
   # install_powerlevel10k_theme
   install_nvim_config
   install_sway_config
@@ -246,7 +247,9 @@ check_packages_are_installed () {
   check_package "playerctl"
   check_package "pwvucontrol"
   check_package "pyenv"
+  check_package "rbenv"
   check_package "ripgrep"
+  check_package "ruby-build"
   check_package "slack-desktop"
   check_package "spotify"
   check_package "starship"
@@ -385,6 +388,15 @@ install_starship_config () {
 
   src="$(pwd)/starship/starship.toml"
   dst="$HOME/.config/starship.toml"
+  link_file "$src" "$dst"
+}
+
+install_bat_config () {
+  info 'installing bat config file'
+  mkdir -p ~/.config/bat
+
+  src="$(pwd)/bat/config"
+  dst="$HOME/.config/bat/config"
   link_file "$src" "$dst"
 }
 

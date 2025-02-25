@@ -34,6 +34,7 @@ Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-abolish' " Spelling fixes and children -> adult
 Plugin 'tpope/vim-speeddating' " date manipulation
+Plugin 'mgedmin/coverage-highlight.vim'
 
 " New and should learn to use
 Plugin 'tpope/vim-dadbod' " databases in vim!
@@ -167,11 +168,10 @@ set switchbuf=uselast
 let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'bash=sh']
 
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --hidden'
 endif
 
-" I use H/L to page, so don't let it open windows
-let g:ack_mappings = { "H": "" }
+let g:coverage_script = 'python -m coverage'
 
-" fzf
-let g:fzf_vim = {}
+" I use H/L to page, so don't let it open windows
+" let g:ack_mappings = { "H": "" }

@@ -1,5 +1,6 @@
 # Gruvbox
-I make heavy use of [`gruvbox`](https://github.com/morhetz/gruvbox) and it's colors
+I make heavy use of [`gruvbox`](https://github.com/morhetz/gruvbox) and it's colors.
+This is a reference for me.
 
 ### Color Codes
 

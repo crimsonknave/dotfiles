@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+# This is how you get the ips if they change
+# sudo avahi-daemon
+# avahi-browse -t _elg._tcp --resolve
+
+if [[ "$1" == "work" ]]; then
+  host="192.168.148.114"
+elif [[ "$1" == "personal" ]]; then
+  host="192.168.148.218"
+fi
+
+if [[ "$2" == "on" ]]; then
+  on=1
+elif [[ "$2" == "off" ]]; then
+  on=0
+elif [[ "$2" == "status" ]]; then
+  curl --silent "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq ".lights[0].on"
+  exit 0
+else
+  current=$(curl --silent "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq ".lights[0].on")
+  if [ $current = "0" ]; then
+    on="1"
+  else
+    on="0"
+  fi
+
+fi
+
+curl --silent "http://$host:9123/elgato/lights" -XPUT -H 'Content-Type: application/json' -d '{"numberOfLights":1,"lights":[{"on":'$on'}]}' > /dev/null
