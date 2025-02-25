@@ -1,6 +1,8 @@
 #!/usr/bin/ruby
 require 'irb/completion'
-require 'irb/ext/save-history'
+# eval_history is 3.3
+require 'irb/ext/eval_history'
+# require 'irb/ext/save-history'
 require 'rubygems'
 
 IRB.conf[:SAVE_HISTORY] = 1000

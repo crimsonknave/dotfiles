@@ -8,11 +8,6 @@ export PROJECTS=~/code
 uname -a |grep 'Darwin' > /dev/null
 MAC=$?
 
-# Can we run powerline?
-# python -c 'import sys; sys.version_info < (2,6) and sys.exit(1)'
-# POWERLINE_CAPABLE=$?
-# POWERLINE_CAPABLE=1
-
 # all of our zsh files
 typeset -U config_files
 # Don't use ** to avoid hitting the .zsh files in zsh-syntax-highlighting
@@ -23,4 +18,3 @@ for file in ${(M)config_files:#*/path.zsh}
 do
   source $file
 done
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

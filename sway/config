@@ -44,7 +44,7 @@ bindsym $mod+Ctrl+Shift+q exec .config/sway/go_away.sh
 # bindsym $mod+d exec --no-startup-id dmenu_run
 for_window [title="^sway-launcher-desktop$"] floating enable, sticky enable, border pixel 10
 #, resize set 30 ppt 60 ppt, border pixel 10
-set $menu exec alacritty --config-file ~/.config/alacritty/sway-launcher-desktop.toml  -e sway-launcher-desktop
+set $menu exec alacritty --config-file ~/.config/alacritty/sway-launcher-desktop.toml -e sway-launcher-desktop
 bindsym $mod+d exec $menu
 
 # launch categorized menu
@@ -210,13 +210,16 @@ for_window {
   [app_id="^pavucontrol$"] floating enable
   [app_id="zoom" title="^zoom$"] floating enable
 }
-for_window [class=".*"] inhibit_idle fullscreen
-for_window [app_id=".*"] inhibit_idle fullscreen
 
 # Inhibit idle while these are open
 for_window {
   [title="Zoom Meeting.*"] inhibit_idle open
+  [title="Inhibit Idle On.*"] inhibit_idle open
+  [title="Inhibit Idle Off.*"] inhibit_idle none
+  [all] inhibit_idle fullscreen
 }
+
+
 
 for_window [shell="xwayland"] title_format "[XWayland] %title"
 
@@ -295,6 +298,9 @@ workspace $ws2 output DP-2
 workspace $ws3 output DP-2
 workspace $ws4 output DP-2
 workspace $ws5 output DP-1
+
+output * adaptive_sync on
+
 #
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

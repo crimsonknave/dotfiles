@@ -37,8 +37,8 @@ plugins=(
   python
   rails
   rake-fast
+  rbenv
   ruby
-  # rvm
   systemd
   tmux
   thefuck
@@ -64,6 +64,7 @@ do
   source $file
 done
 
+
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
 compinit
@@ -75,8 +76,6 @@ do
 done
 
 unset config_files
-
-# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # zprof
 eval "$(starship init zsh)"

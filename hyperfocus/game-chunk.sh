@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+# SDL_VIDEODRIVER=wayland /home/elim/.dotfiles/hyperfocus/game-chunk.sh %command%
+# SDL_VIDEODRIVER="wayland,x11" %command%
+# env __GLX_VENDOR_LIBRARY_NAME=mesa __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json MESA_LOADER_DRIVER_OVERRIDE=zink GALLIUM_DRIVER=zink /home/elim/.dotfiles/hyperfocus/game-chunk.sh %command%
 
 game=$@
 unit="m"
@@ -23,8 +26,8 @@ case "$day-$hour" in
     (*-2[01]) ;&
     (Sat-1[1234567]) ;&
     (Sun-1[1234567]) 
-      echo sswaynag -m "$launch_message" --button-dismiss "5m" 'echo "5" > /tmp/game-chunk-time' -s Start! $swaynag_settings
-      echo aswaynag -m "$launch_message" $(duration_message 5) -s Start! $swaynag_settings
+      echo swaynag -m "$launch_message" --button-dismiss "5m" 'echo "5" > /tmp/game-chunk-time' -s Start! $swaynag_settings
+      echo swaynag -m "$launch_message" $(duration_message 5) -s Start! $swaynag_settings
       swaynag -m "$launch_message" $(duration_message 5) -s Start! $swaynag_settings;;
     (*-1[1234567]) 
         swaynag -m "Are you on vacation?" -s No --button-dismiss Yes 'touch /tmp/vacation-true' --background F0B27A --button-background F0B27A --text 1C2833 --button-text 1C2833 $swaynag_settings -d
