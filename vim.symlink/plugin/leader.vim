@@ -77,3 +77,21 @@ nmap <leader>ch :ColorToggle
 " Coverage
 nmap <leader>hc :HighlightCoverage <CR>
 nmap <leader>hco :HighlightCoverageOff <CR>
+
+" Vimspector
+nnoremap <Leader>ds :call vimspector#Launch()<CR>
+" quit
+nnoremap <Leader>dq :call vimspector#Reset()<CR>
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+
+nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dB :call vimspector#ClearBreakpoints()<CR>
+
+nmap <Leader>dr <Plug>VimspectorRestart
+nmap <Leader>dk <Plug>VimspectorStepOut
+nmap <Leader>dj <Plug>VimspectorStepInto
+nmap <Leader>dl <Plug>VimspectorStepOver
+
+nmap <Leader>du <Plug>VimspectorUpFrame
+nmap <Leader>dd <Plug>VimspectorDownFrame
+

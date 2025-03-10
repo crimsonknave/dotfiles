@@ -28,6 +28,7 @@ Plugin 'OmniSharp/OmniSharp-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'psliwka/vim-dirtytalk'
+Plugin 'puremourning/vimspector'
 
 " Should actually remember exists and make use of
 Plugin 'AndrewRadev/splitjoin.vim'
