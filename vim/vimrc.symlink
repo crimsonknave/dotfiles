@@ -29,6 +29,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'psliwka/vim-dirtytalk'
 Plugin 'puremourning/vimspector'
+Plugin 'sagi-z/vimspectorpy'
 
 " Should actually remember exists and make use of
 Plugin 'AndrewRadev/splitjoin.vim'
@@ -40,6 +41,7 @@ Plugin 'mgedmin/coverage-highlight.vim'
 " New and should learn to use
 Plugin 'tpope/vim-dadbod' " databases in vim!
 Plugin 'tpope/vim-dispatch' " run tests and other scripts in vim with tmux integration
+Plugin 'github/copilot.vim'
 
 " Would be used if I wrote in X anymore
 Plugin 'Keithbsmiley/rspec.vim'

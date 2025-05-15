@@ -95,3 +95,17 @@ nmap <Leader>dl <Plug>VimspectorStepOver
 nmap <Leader>du <Plug>VimspectorUpFrame
 nmap <Leader>dd <Plug>VimspectorDownFrame
 
+" Copilot - ,
+nmap <leader>,e :Copilot enable<CR>
+nmap <leader>,d :Copilot disable<CR>
+nmap <leader>,s :Copilot status<CR>
+nmap <leader>,o :Copilot panel<CR>
+nmap <leader>,q <Plug>(copilot-dismiss)
+nmap <leader>,n <Plug>(copilot-next)
+nmap <leader>,p <Plug>(copilot-previous)
+nmap <leader>,q <Plug>(copilot-dismiss)
+nmap <leader>,q <Plug>(copilot-dismiss)
+
+" Existing leader mappings
+" NerdCommenter - c
+" Futitive(Git) - g

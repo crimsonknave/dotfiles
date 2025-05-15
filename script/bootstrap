@@ -167,6 +167,7 @@ install_dotfiles () {
   update_submodules
   install_alacritty_config
   install_kitty_config
+  install_gh_not_config
   install_tmux_powerline_config
   install_foot_config
   install_starship_config
@@ -441,6 +442,20 @@ install_kitty_config () {
   done
 
 }
+
+install_gh_not_config () {
+  info 'installing gh not config file'
+
+  mkdir -p ~/.config/gh-not
+
+  for config in $(find "$DOTFILES_ROOT/gh-not" -maxdepth 1 -name '*.yaml' -printf "%f\n")
+  do
+    src="$(pwd)/gh-not/$config"
+    dst="$HOME/.config/gh-not/$config"
+    link_file "$src" "$dst"
+  done
+}
+
 install_alacritty_config () {
   info 'installing alacritty config file'
 

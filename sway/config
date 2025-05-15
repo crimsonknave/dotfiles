@@ -215,6 +215,7 @@ for_window {
 for_window {
   [title="^Zoom Meeting.*"] inhibit_idle open
   [title="^Meeting.*"] inhibit_idle open
+  [class="zoom"] inhibit_idle open
   [title="Inhibit Idle On.*"] inhibit_idle open
   [title="Inhibit Idle Off.*"] inhibit_idle none
   [all] inhibit_idle fullscreen
