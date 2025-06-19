@@ -37,6 +37,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-abolish' " Spelling fixes and children -> adult
 Plugin 'tpope/vim-speeddating' " date manipulation
 Plugin 'mgedmin/coverage-highlight.vim'
+Plugin 'tpope/vim-obsession' " session management
 
 " New and should learn to use
 Plugin 'tpope/vim-dadbod' " databases in vim!

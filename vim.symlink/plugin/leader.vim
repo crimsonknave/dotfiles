@@ -8,11 +8,44 @@
 let mapleader = ','
 " Don't do below, it messes up window swap!
 " nmap <leader>w :w<cr>
+"
+" Used prefaces
+" a - ag/search file contents
+" b - 
+" c - tags, color
+" d - debug
+" e == Explore
+" f == Fix/Format
+" g - Git
+" h == history, highlight coverage
+" i -
+" j == decrement
+" k == increment
+" l - list commands
+" m == marks
+" n == next
+" o -
+" p == previous
+" q -
+" r - ripgrep
+" s - Spelling, split
+" t == Search git file names (T == all)
+" u -
+" v - vertical split
+" w -
+" x -
+" y -
+" z -
+" , - Copilot
+" Space == Clear search highlights
+" Tab == Search mappings  comm
+" Ctrl + x == Insert mode completion
+" * - Search current word
 
 map <leader><space> :noh<cr>
 map <leader>e :Explore<cr> 
 
-" Spelling shortcuts
+" Spelling shortcuts - s
 " map <leader>ss :setlocal spell!<cr>
 map <leader>ss :call ToggleSpell()<cr>
 map <leader>sn ]s
@@ -27,7 +60,7 @@ map <leader>s :sp<cr>
 map <leader>'' cs"'
 map <leader>"" cs'"
 
-" git
+" git - g
 map <leader>gs :GFiles?<cr>
 map <leader>gb :Git blame<cr>
 map <leader>gc :Commits<cr>
@@ -65,20 +98,20 @@ nmap <leader>ct :Tags<cr>
 " Vim Introspection
 nmap <leader>m :Marks<cr>
 nmap <leader>h :History:<cr>
-nmap <leader>c :Commands<cr>
+nmap <leader>lc :Commands<cr>
 
 " Numbers
-nmap <leader>i <C-a>
-nmap <leader>d <C-x>
+nmap <leader>k <C-a>
+nmap <leader>j <C-x>
 
 " Color
-nmap <leader>ch :ColorToggle
+nmap <leader>ch :ColorToggle <CR>
 
 " Coverage
 nmap <leader>hc :HighlightCoverage <CR>
 nmap <leader>hco :HighlightCoverageOff <CR>
 
-" Vimspector
+" Vimspector - d
 nnoremap <Leader>ds :call vimspector#Launch()<CR>
 " quit
 nnoremap <Leader>dq :call vimspector#Reset()<CR>

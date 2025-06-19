@@ -43,9 +43,13 @@ set -g set-titles-string 'tmux:#S:#I'
 set -g automatic-rename
 # set-option -g default-command "/usr/bin/zsh -l"
 
+# Resurrect Settings
+set -g @resurrect-strategy-vim 'session'
+
 # TPM
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 run '/usr/share/tmux-plugin-manager/tpm'
 

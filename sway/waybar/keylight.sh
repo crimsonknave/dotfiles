@@ -1,11 +1,13 @@
 #!/usr/bin/bash
-echo "run" >> /tmp/foo
+echo "run" >> /tmp/keylight.log
 
 if [[ `whoami` == "crimsonknave" ]]; then
   name="work"
 else
   name="personal"
 fi
+
+PATH="/home/crimsonknave/.dotfiles/bin:$PATH"
 
 if [[ $1 == "status" ]]; then
   status=$(elgato $name "status")
