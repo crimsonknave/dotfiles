@@ -52,7 +52,7 @@
 @define-color ten @bg4;
 @define-color eleven @bg1;
 
-@define-color warning   @bryellow;
+@define-color warning   @brorange;
 @define-color critical  @red;
 @define-color mode  @black;
 @define-color unfocused @blue;
