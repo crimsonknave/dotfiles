@@ -26,7 +26,7 @@ let mapleader = ','
 " n == next
 " o -
 " p == previous
-" q -
+" q - ag/fzf in bottom
 " r - ripgrep
 " s - Spelling, split
 " t == Search git file names (T == all)
@@ -90,7 +90,6 @@ nmap <leader>rg :Rg <C-R><C-W><CR>
 nmap <Leader>* :AgOnlyContents <C-R><C-W><CR>
 nmap <Leader>a :AgOnlyContents <CR>
 nmap <Leader>A :Ag <CR>
-" map <leader>a :Ack!<Space>
 
 "tags
 nmap <leader>ct :Tags<cr>
@@ -119,6 +118,7 @@ nnoremap <Leader>dc :call vimspector#Continue()<CR>
 
 nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
 nnoremap <Leader>dB :call vimspector#ClearBreakpoints()<CR>
+nnoremap <Leader>dt :call OmniSharpDebugTest()<CR>
 
 nmap <Leader>dr <Plug>VimspectorRestart
 nmap <Leader>dk <Plug>VimspectorStepOut
@@ -136,8 +136,6 @@ nmap <leader>,o :Copilot panel<CR>
 nmap <leader>,q <Plug>(copilot-dismiss)
 nmap <leader>,n <Plug>(copilot-next)
 nmap <leader>,p <Plug>(copilot-previous)
-nmap <leader>,q <Plug>(copilot-dismiss)
-nmap <leader>,q <Plug>(copilot-dismiss)
 
 " Existing leader mappings
 " NerdCommenter - c

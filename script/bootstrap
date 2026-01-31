@@ -286,7 +286,7 @@ check_packages_are_installed () {
     then
       install_string="apt install $package_list"
     else
-      install_string="yay -Sy$package_list"
+      install_string="yay -S$package_list"
     fi
     echo $install_string
     $install_string

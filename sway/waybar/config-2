@@ -35,8 +35,10 @@
 		"custom/rarrow3",
 		"tray",
 		"custom/rarrow2",
-		"clock#date",
+		"battery",
 		"custom/rarrow1",
+		"clock#date",
+		"custom/rarrow0",
 		"clock#time"
 	],
 
@@ -196,6 +198,11 @@
 	"tray": {
 		"icon-size": 18
 		//"spacing": 10
+	},
+
+	"custom/rarrow0": {
+		"format": "",
+		"tooltip": false
 	},
 
 	"custom/rarrow1": {

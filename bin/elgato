@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+set -ex
 
 # This is how you get the ips if they change
 # sudo avahi-daemon
@@ -7,7 +8,7 @@
 if [[ "$1" == "work" ]]; then
   host="192.168.148.114"
 elif [[ "$1" == "personal" ]]; then
-  host="192.168.148.218"
+  host="192.168.148.215"
 fi
 
 if [[ "$2" == "on" ]]; then
@@ -15,11 +16,12 @@ if [[ "$2" == "on" ]]; then
 elif [[ "$2" == "off" ]]; then
   on=0
 elif [[ "$2" == "status" ]]; then
-  curl --silent "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq ".lights[0].on"
+  curl "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq ".lights[0].on"
+  # curl --silent "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq ".lights[0].on"
   exit 0
 else
   current=$(curl --silent "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq ".lights[0].on")
-  if [ $current = "0" ]; then
+  if [[ $current == "0" ]]; then
     on="1"
   else
     on="0"
