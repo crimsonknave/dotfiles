@@ -15,6 +15,11 @@ if [[ "$2" == "on" ]]; then
 elif [[ "$2" == "off" ]]; then
   on=0
 elif [[ "$2" == "status" ]]; then
+  if [[ "$3" == "full" ]]; then
+    echo "Full status requested"
+    curl --silent "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq "."
+    exit 0
+  fi
   curl --silent "http://$host:9123/elgato/lights" -XGET -H 'Content-Type: application/json' | jq ".lights[0].on"
   exit 0
 else

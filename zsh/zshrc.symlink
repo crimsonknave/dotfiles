@@ -17,7 +17,7 @@ plugins=(
   1password
   alias-finder
   archlinux
-  autojump
+  # autojump
   colored-man-pages
   colorize
   command-not-found
