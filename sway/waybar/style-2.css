@@ -40,7 +40,8 @@
 @define-color bg4 #7c6f64;
 @define-color black @bg;
 
-@define-color one @white;
+@define-color zero @white;
+@define-color one @bg4;
 @define-color two @bg1;
 @define-color three @blue;
 @define-color four @purple;
@@ -60,8 +61,9 @@
 @define-color inactive  @aqua;
 @define-color window @green;
 
-@define-color time  @one;
-@define-color date  @two;
+@define-color time  @zero;
+@define-color date  @one;
+@define-color battery  @two;
 @define-color tray @three; 
 @define-color idle  @four;
 @define-color temp  @five;
@@ -245,11 +247,20 @@
 
 #clock.date {
   background: @date;
-  color: @white;
 }
 
 #clock.time {
   background: @time;
+}
+
+#battery {
+  background: @battery;
+  color: @white;
+}
+
+#custom-rarrow0 {
+  color: @zero;
+  background: @one;
 }
 
 #custom-rarrow1 {
